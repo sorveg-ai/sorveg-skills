@@ -69,11 +69,15 @@ Sorveg executes instead of predicts.
 
 ## 🧠 Example capabilities
 
+```
 detect cycle in graph
 optimize delivery route
 find longest common subsequence
 search codebase for auth logic
 plan trip with constraints
+```
+
+---
 
 ## ⚙️ How it works
 
@@ -88,39 +92,57 @@ plan trip with constraints
   "steps": ["..."],
   "executionTime": 23
 }
+```
 
-🔌 API
+---
 
-POST https://api.sorveg.com/api/skills/{skill}
+## 🔌 API
 
-Body:
+**POST** `https://api.sorveg.com/api/skills/{skill}`
 
+**Body:**
+```json
 { "prompt": "..." }
+```
 
-Response:
-
+**Response:**
+```json
 {
   "result": "...",
   "steps": [...],
   "executionTime": 23
 }
+```
 
-🏗 Architecture
-Local-first deterministic execution
-Sandboxed runtime (no side effects)
-FastAPI backend
-React + TypeScript frontend
-Composable via chained prompts
-🚀 Try it
+---
+
+## 🏗 Architecture
+
+- Local-first deterministic execution
+- Sandboxed runtime (no side effects)
+- FastAPI backend
+- React + TypeScript frontend
+- Composable via chained prompts
+
+---
+
+## 🚀 Try it
+
 https://skills.sorveg.com/playground
 
-📄 License
+---
+
+## 📄 License
+
 MIT — public layer. Core orchestration remains proprietary.
 
-🎯 Positioning
+---
+
+## 🎯 Positioning
+
 Sorveg is not an AI assistant. It is a reproducible computation layer.
 
 Use it when results must be verifiable, outputs must be stable, and correctness matters more than fluency.
 
-https://sorveg.com
+https://sorveg.com  
 Deterministic AI for developers
