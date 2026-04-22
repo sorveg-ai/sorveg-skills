@@ -1,78 +1,152 @@
 # Sorveg Skills
 
-> **A deterministic execution contract.** Same input → same output. Every time.
+> **A Sorveg link is a deterministic execution contract.**
 
-[Live Playground](https://skills.sorveg.com/playground) • [Sign Up](https://sorveg.com/signup) • [Docs](https://docs.sorveg.com)
+Most AI tools generate responses. Sorveg executes computations.
 
----
+**Same input → same output.**
 
-## The product is the link
-
-A Sorveg link isn't a result — it's a verifiable computation:
-
-8 lines hidden
-https://skills.sorveg.com/playground?prompt=sort%20
-
-[64][34][25]
-
-Share it. Anyone can run it. Everyone gets identical output. No setup. No API key. No "it works on my machine."
-
-**The link replaces documentation.** It's example, test case, and benchmark in one.
+**[Live Playground](https://skills.sorveg.com/playground)** • **[Sign Up](https://sorveg.com)** • **[Docs](https://docs.sorveg.com)**
 
 ---
 
 ## Try in 10 seconds
 
-**1. Sort**
-```bash
-$ sorveg run "sort [64,34,25,12,22,11,90]"
-✓ [11,12,22,25,34,64,90] (23ms)
+### 1. Sort + Search
+```
+Input: sort then find index of 25
+Output:
+        index: 3
+        (23ms)
+```[64][34][25][12][22][11][90]
 
-8 lines hidden
-2. Shortest Path
+### 2. Shortest Path
+```
+Input: shortest path from A to D
+Output: A → B → C → D
+        cost: 4
+        (18ms)
+```
 
-Bash
-$ sorveg run "shortest path A to D"
-✓ A→B→C→D cost:4 (18ms)
-3. Knapsack
+### 3. Knapsack
+```
+Input: weights, values, capacity 5
+Output: max value: 7
+        items:
+        (31ms)
+```[2][3][4][5]
 
-Bash
-$ sorveg run "knapsack capacity 5"
-✓ max value: 7 (31ms)
-Open Playground →
+---
 
-Why this works
-Traditional AI:
+## The model
 
-Probabilistic outputs
-Varies by session
-Cannot be verified
-Sorveg:
+A Sorveg link replaces documentation.
 
-Deterministic for supported computations
-No probabilistic variation
-Reproducible outputs for identical inputs
-"If it can't be reproduced, it isn't engineering."
+```
+https://skills.sorveg.com/playground?prompt=sort+
+```[64][34][25]
 
-Built for developers
-Local-first: Runs on your hardware. No data leaves your machine.
-Verifiable: Every execution shows steps, timing, and full trace.
-Composable: Chain skills via links or API.
-Shareable: Links are self-contained units of trust.
-Run → Share → Modify → Re-run → Re-share. That's the network effect.
+Anyone opening that link can:
+- Run the same computation
+- Get the same result
+- Verify it instantly
+- Modify and re-run
 
-9 public skills, 433+ in private
-This demo shows 9 core algorithms. The full Sorveg platform includes:
+No setup. No environment. No hidden state.
 
-Graph: cycle detection, shortest path, topological sort
-Optimization: knapsack, scheduling, route optimization
-Search: binary search, semantic search, codebase search
-Reasoning: data analysis, code audit, multi-step planning
-Each is executable. Each is verifiable. Each is shareable.
+**Run → Share → Modify → Re-run → Re-share**
 
-Get full access →
+---
 
-License
-MIT — public demo layer only. Core orchestration and agentic capabilities remain proprietary.
+## Why this exists
 
-Built by Sorvegian AI • sorveg.com
+> **If it can't be reproduced, it's not a valid result.**
+
+Most AI systems are probabilistic, non-reproducible, and difficult to verify. That breaks debugging, validation, and automation.
+
+Sorveg executes instead of predicts.
+
+---
+
+## What you get
+
+- Deterministic execution (for supported computations)
+- Reproducible results across runs, machines, and time
+- Step-by-step traces
+- Sub-100ms execution (typical)
+- Shareable execution links
+- 433+ computational skills
+
+---
+
+## Example capabilities
+
+```
+detect cycle in graph
+optimize delivery route
+find longest common subsequence
+search codebase for auth logic
+plan trip with constraints
+```
+
+These are executed tasks — not generated responses.
+
+---
+
+## How it works
+
+1. Write prompt
+2. Sorveg maps to computation
+3. Executes in sandbox
+4. Returns structured output
+
+```json
+{
+  "result": "...",
+  "steps": ["..."],
+  "executionTime": 23
+}
+```
+
+---
+
+## Architecture
+
+**Local-first deterministic execution. Sovereign by design.**
+
+- Frontend: React 19 + TypeScript + Tailwind CSS 4
+- Execution: Sandboxed deterministic engine
+- API: FastAPI
+- Composable via chained prompts and external orchestration
+
+---
+
+## API
+
+```
+POST https://api.sorveg.com/api/skills/{skill}
+
+Body: { "prompt": "..." }
+
+Response: {
+  "result": "...",
+  "steps": [...],
+  "executionTime": 23
+}
+```
+
+---
+
+## Try it
+
+**[→ skills.sorveg.com/playground](https://skills.sorveg.com/playground)**
+
+---
+
+## License
+
+MIT — public demo only. Core orchestration remains proprietary.
+
+---
+
+**[sorveg.com](https://sorveg.com)** — Deterministic AI for developers
